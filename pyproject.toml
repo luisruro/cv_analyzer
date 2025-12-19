@@ -1,0 +1,16 @@
+[project]
+name = "cv_analyzer"
+version = "0.1.0"
+description = "An AI-driven application for analyzing and extracting insights from resumes using LangChain"
+readme = "README.md"
+requires-python = ">=3.11"
+
+dependencies = [
+    "langchain",
+    "langchain-openai",
+    "langchain-community",
+    "python-dotenv",
+    "streamlit",
+    "langchain-classic",
+    "pydantic"
+]
