@@ -12,5 +12,6 @@ dependencies = [
     "python-dotenv",
     "streamlit",
     "langchain-classic",
-    "pydantic"
+    "pydantic",
+    "pyPDF2"
 ]
