@@ -76,6 +76,6 @@ CHAT_PROMPT = ChatPromptTemplate.from_messages([
     ANALYSIS_PROMPT
 ])
 
-def crear_sistema_prompts():
+def create_system_prompts():
     """Create a specialized prompt system for CV analysis"""
     return CHAT_PROMPT
