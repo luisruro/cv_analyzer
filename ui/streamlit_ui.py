@@ -141,7 +141,8 @@ def process_analysis(file_cv, job_description):
         status_text.text("📄 Extracting text from the PDF...")
         progress_bar.progress(25)
         
-        text_cv = PDFTextExtractor.extract_text_df(file_cv)
+        pdf_extractor = PDFTextExtractor()
+        text_cv = pdf_extractor.extract_text_df(file_cv)
         
         if text_cv.startswith("Error"):
             st.error(f"❌ {text_cv}")
@@ -153,7 +154,8 @@ def process_analysis(file_cv, job_description):
         status_text.text("📊 Analyzing candidate...")
         progress_bar.progress(75)
         
-        result = CVEvaluator.evaluate_candidate(text_cv, job_description)
+        cv_evaluator = CVEvaluator()
+        result = cv_evaluator.evaluate_candidate(text_cv, job_description)
         
         status_text.text("✅ Analysis completed")
         progress_bar.progress(100)
@@ -225,7 +227,7 @@ def show_results(result: CVAnalysis):
     col_strengths, col_improvements = st.columns(2)
     
     with col_strengths:
-        st.subheader("💪 Fortalezas Principales")
+        st.subheader("💪 Main Strengths")
         if result.strenghts:
             for i, strength in enumerate(result.strenghts, 1):
                 st.markdown(f"**{i}.** {strength}")
@@ -233,7 +235,7 @@ def show_results(result: CVAnalysis):
             st.info("No specific strengths were identified")
     
     with col_improvements:
-        st.subheader("📈 Áreas de Desarrollo")
+        st.subheader("📈 Development Areas")
         if result.improvement_areas:
             for i, area in enumerate(result.improvement_areas, 1):
                 st.markdown(f"**{i}.** {area}")

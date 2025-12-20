@@ -8,7 +8,7 @@ class PDFTextExtractor:
             complete_text = ""
             
             for page_number, page in enumerate(pdf_reader.pages, start=1):
-                text_page = page.extractText()
+                text_page = page.extract_text()
                 if text_page.strip():
                     complete_text += f"\n--- PAGE {page_number} ---\n"
                     complete_text += text_page + "\n"

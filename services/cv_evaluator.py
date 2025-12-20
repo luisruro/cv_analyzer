@@ -2,7 +2,7 @@ from langchain_openai import ChatOpenAI
 
 from models.cv_model import CVAnalysis
 from prompts.cv_prompts import create_system_prompts
-from config import *
+from services.config import *
 
 from dotenv import load_dotenv
 import os
@@ -17,6 +17,7 @@ class CVEvaluator:
 
     def create_cv_evaluator_model(self):
         base_model = ChatOpenAI(
+            api_key= os.getenv("API_KEY"),
             model = MODEL,
             temperature = TEMPERATURE,
             #If you are using deepseek, enable it
@@ -45,7 +46,7 @@ class CVEvaluator:
             return result
         
         except Exception as e:
-            return self._error_response()
+            raise e
     
     @staticmethod
     def _error_response() -> CVAnalysis:
