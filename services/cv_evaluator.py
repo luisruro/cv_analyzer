@@ -20,8 +20,6 @@ class CVEvaluator:
             api_key= os.getenv("API_KEY"),
             model = MODEL,
             temperature = TEMPERATURE,
-            #If you are using deepseek, enable it
-            #client= DEEPSEEK_URL
         )
         
         structured_model = base_model.with_structured_output(CVAnalysis)
